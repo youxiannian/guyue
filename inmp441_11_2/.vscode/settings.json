@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "main.h": "c",
+        "arch.h": "c"
+    },
+    "githubPullRequests.remotes": [
+        "origin",
+        "upstream",
+        "guyue"
+    ]
+}
