@@ -1,0 +1,14 @@
+inmp441\scal.o: ..\speexdsp-1.2rc3\libspeexdsp\scal.c
+inmp441\scal.o: ../speexdsp-1.2rc3/include/config.h
+inmp441\scal.o: ../speexdsp-1.2rc3/include/speex/speex_echo.h
+inmp441\scal.o: ../speexdsp-1.2rc3/include/speex/speexdsp_types.h
+inmp441\scal.o: ../speexdsp-1.2rc3/include/speex/speexdsp_config_types.h
+inmp441\scal.o: ..\speexdsp-1.2rc3\libspeexdsp\vorbis_psy.h
+inmp441\scal.o: ..\speexdsp-1.2rc3\libspeexdsp\arch.h
+inmp441\scal.o: ..\speexdsp-1.2rc3\libspeexdsp\os_support.h
+inmp441\scal.o: D:\software\keil_\ARM\ARMCC\Bin\..\include\string.h
+inmp441\scal.o: D:\software\keil_\ARM\ARMCC\Bin\..\include\stdio.h
+inmp441\scal.o: D:\software\keil_\ARM\ARMCC\Bin\..\include\stdlib.h
+inmp441\scal.o: ../speexdsp-1.2rc3/include/config.h
+inmp441\scal.o: ..\speexdsp-1.2rc3\libspeexdsp\smallft.h
+inmp441\scal.o: D:\software\keil_\ARM\ARMCC\Bin\..\include\math.h

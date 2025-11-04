@@ -1,0 +1,13 @@
+inmp441\filterbank.o: ..\speexdsp-1.2rc3\libspeexdsp\filterbank.c
+inmp441\filterbank.o: ../speexdsp-1.2rc3/include/config.h
+inmp441\filterbank.o: ..\speexdsp-1.2rc3\libspeexdsp\filterbank.h
+inmp441\filterbank.o: ..\speexdsp-1.2rc3\libspeexdsp\arch.h
+inmp441\filterbank.o: ../speexdsp-1.2rc3/include/speex/speexdsp_types.h
+inmp441\filterbank.o: ../speexdsp-1.2rc3/include/speex/speexdsp_config_types.h
+inmp441\filterbank.o: D:\software\keil_\ARM\ARMCC\Bin\..\include\math.h
+inmp441\filterbank.o: ..\speexdsp-1.2rc3\libspeexdsp\math_approx.h
+inmp441\filterbank.o: ..\speexdsp-1.2rc3\libspeexdsp\os_support.h
+inmp441\filterbank.o: D:\software\keil_\ARM\ARMCC\Bin\..\include\string.h
+inmp441\filterbank.o: D:\software\keil_\ARM\ARMCC\Bin\..\include\stdio.h
+inmp441\filterbank.o: D:\software\keil_\ARM\ARMCC\Bin\..\include\stdlib.h
+inmp441\filterbank.o: ../speexdsp-1.2rc3/include/config.h
