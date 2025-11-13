@@ -1,0 +1,9 @@
+inmp441\lsp.o: ..\libspeex\lsp.c
+inmp441\lsp.o: ..\..\speex-11.11\config.h
+inmp441\lsp.o: D:\software\keil_\ARM\ARMCC\Bin\..\include\math.h
+inmp441\lsp.o: ..\libspeex\lsp.h
+inmp441\lsp.o: ..\libspeex\arch.h
+inmp441\lsp.o: ..\include\speex\speex_types.h
+inmp441\lsp.o: ..\include\speex\speex_config_types.h
+inmp441\lsp.o: ..\libspeex\stack_alloc.h
+inmp441\lsp.o: ..\libspeex\math_approx.h

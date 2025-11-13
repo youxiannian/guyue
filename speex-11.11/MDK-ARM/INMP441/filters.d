@@ -1,0 +1,11 @@
+inmp441\filters.o: ..\libspeex\filters.c
+inmp441\filters.o: ..\..\speex-11.11\config.h
+inmp441\filters.o: ..\libspeex\filters.h
+inmp441\filters.o: ..\libspeex\arch.h
+inmp441\filters.o: ..\include\speex\speex_types.h
+inmp441\filters.o: ..\include\speex\speex_config_types.h
+inmp441\filters.o: ..\libspeex\stack_alloc.h
+inmp441\filters.o: ..\libspeex\math_approx.h
+inmp441\filters.o: ..\libspeex\ltp.h
+inmp441\filters.o: ..\include\speex\speex_bits.h
+inmp441\filters.o: D:\software\keil_\ARM\ARMCC\Bin\..\include\math.h

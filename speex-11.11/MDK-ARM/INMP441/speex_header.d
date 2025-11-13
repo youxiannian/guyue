@@ -1,0 +1,13 @@
+inmp441\speex_header.o: ..\libspeex\speex_header.c
+inmp441\speex_header.o: ..\..\speex-11.11\config.h
+inmp441\speex_header.o: ..\libspeex\arch.h
+inmp441\speex_header.o: ..\include\speex\speex_types.h
+inmp441\speex_header.o: ..\include\speex\speex_config_types.h
+inmp441\speex_header.o: ..\include\speex\speex_header.h
+inmp441\speex_header.o: ..\include\speex\speex.h
+inmp441\speex_header.o: ..\include\speex\speex_bits.h
+inmp441\speex_header.o: ..\libspeex\os_support.h
+inmp441\speex_header.o: D:\software\keil_\ARM\ARMCC\Bin\..\include\string.h
+inmp441\speex_header.o: D:\software\keil_\ARM\ARMCC\Bin\..\include\stdio.h
+inmp441\speex_header.o: D:\software\keil_\ARM\ARMCC\Bin\..\include\stdlib.h
+inmp441\speex_header.o: ..\..\speex-11.11\config.h

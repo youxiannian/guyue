@@ -1,0 +1,13 @@
+inmp441\quant_lsp.o: ..\libspeex\quant_lsp.c
+inmp441\quant_lsp.o: ..\..\speex-11.11\config.h
+inmp441\quant_lsp.o: ..\libspeex\quant_lsp.h
+inmp441\quant_lsp.o: ..\include\speex\speex_bits.h
+inmp441\quant_lsp.o: ..\libspeex\arch.h
+inmp441\quant_lsp.o: ..\include\speex\speex_types.h
+inmp441\quant_lsp.o: ..\include\speex\speex_config_types.h
+inmp441\quant_lsp.o: ..\libspeex\os_support.h
+inmp441\quant_lsp.o: D:\software\keil_\ARM\ARMCC\Bin\..\include\string.h
+inmp441\quant_lsp.o: D:\software\keil_\ARM\ARMCC\Bin\..\include\stdio.h
+inmp441\quant_lsp.o: D:\software\keil_\ARM\ARMCC\Bin\..\include\stdlib.h
+inmp441\quant_lsp.o: ..\..\speex-11.11\config.h
+inmp441\quant_lsp.o: D:\software\keil_\ARM\ARMCC\Bin\..\include\math.h

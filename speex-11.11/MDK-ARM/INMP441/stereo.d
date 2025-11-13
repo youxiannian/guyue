@@ -1,0 +1,17 @@
+inmp441\stereo.o: ..\libspeex\stereo.c
+inmp441\stereo.o: ..\..\speex-11.11\config.h
+inmp441\stereo.o: ..\include\speex\speex_stereo.h
+inmp441\stereo.o: ..\include\speex\speex_types.h
+inmp441\stereo.o: ..\include\speex\speex_config_types.h
+inmp441\stereo.o: ..\include\speex\speex_bits.h
+inmp441\stereo.o: ..\include\speex\speex_callbacks.h
+inmp441\stereo.o: ..\include\speex\speex.h
+inmp441\stereo.o: ..\libspeex\math_approx.h
+inmp441\stereo.o: ..\libspeex\arch.h
+inmp441\stereo.o: ..\libspeex\vq.h
+inmp441\stereo.o: D:\software\keil_\ARM\ARMCC\Bin\..\include\math.h
+inmp441\stereo.o: ..\libspeex\os_support.h
+inmp441\stereo.o: D:\software\keil_\ARM\ARMCC\Bin\..\include\string.h
+inmp441\stereo.o: D:\software\keil_\ARM\ARMCC\Bin\..\include\stdio.h
+inmp441\stereo.o: D:\software\keil_\ARM\ARMCC\Bin\..\include\stdlib.h
+inmp441\stereo.o: ..\..\speex-11.11\config.h

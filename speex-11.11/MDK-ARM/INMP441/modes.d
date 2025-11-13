@@ -1,0 +1,17 @@
+inmp441\modes.o: ..\libspeex\modes.c
+inmp441\modes.o: ..\..\speex-11.11\config.h
+inmp441\modes.o: ..\libspeex\modes.h
+inmp441\modes.o: ..\include\speex\speex.h
+inmp441\modes.o: ..\include\speex\speex_types.h
+inmp441\modes.o: ..\include\speex\speex_config_types.h
+inmp441\modes.o: ..\include\speex\speex_bits.h
+inmp441\modes.o: ..\libspeex\arch.h
+inmp441\modes.o: ..\libspeex\ltp.h
+inmp441\modes.o: ..\libspeex\quant_lsp.h
+inmp441\modes.o: ..\libspeex\cb_search.h
+inmp441\modes.o: ..\libspeex\sb_celp.h
+inmp441\modes.o: ..\libspeex\nb_celp.h
+inmp441\modes.o: ..\include\speex\speex_callbacks.h
+inmp441\modes.o: ..\libspeex\vbr.h
+inmp441\modes.o: ..\libspeex\filters.h
+inmp441\modes.o: D:\software\keil_\ARM\ARMCC\Bin\..\include\math.h

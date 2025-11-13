@@ -1,0 +1,14 @@
+inmp441\kiss_fft.o: ..\libspeex\kiss_fft.c
+inmp441\kiss_fft.o: ..\..\speex-11.11\config.h
+inmp441\kiss_fft.o: ..\libspeex\_kiss_fft_guts.h
+inmp441\kiss_fft.o: ..\libspeex\kiss_fft.h
+inmp441\kiss_fft.o: D:\software\keil_\ARM\ARMCC\Bin\..\include\stdlib.h
+inmp441\kiss_fft.o: D:\software\keil_\ARM\ARMCC\Bin\..\include\math.h
+inmp441\kiss_fft.o: ..\libspeex\arch.h
+inmp441\kiss_fft.o: ..\include\speex\speex_types.h
+inmp441\kiss_fft.o: ..\include\speex\speex_config_types.h
+inmp441\kiss_fft.o: ..\libspeex\math_approx.h
+inmp441\kiss_fft.o: ..\libspeex\os_support.h
+inmp441\kiss_fft.o: D:\software\keil_\ARM\ARMCC\Bin\..\include\string.h
+inmp441\kiss_fft.o: D:\software\keil_\ARM\ARMCC\Bin\..\include\stdio.h
+inmp441\kiss_fft.o: ..\..\speex-11.11\config.h
