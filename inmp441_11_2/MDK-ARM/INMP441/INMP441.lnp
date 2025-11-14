@@ -43,7 +43,7 @@
 "inmp441\resample.o"
 "inmp441\scal.o"
 "inmp441\smallft.o"
---strict --scatter "INMP441\INMP441.sct"
+--library_type=microlib --strict --scatter "INMP441\INMP441.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
 --list "INMP441.map" -o INMP441\INMP441.axf

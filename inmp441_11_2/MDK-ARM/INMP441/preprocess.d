@@ -6,6 +6,7 @@ inmp441\preprocess.o: ../speexdsp-1.2rc3/include/speex/speexdsp_types.h
 inmp441\preprocess.o: ../speexdsp-1.2rc3/include/speex/speexdsp_config_types.h
 inmp441\preprocess.o: ../speexdsp-1.2rc3/include/speex/speex_echo.h
 inmp441\preprocess.o: ..\speexdsp-1.2rc3\libspeexdsp\arch.h
+inmp441\preprocess.o: ..\speexdsp-1.2rc3\libspeexdsp\fixed_generic.h
 inmp441\preprocess.o: ..\speexdsp-1.2rc3\libspeexdsp\fftwrap.h
 inmp441\preprocess.o: ..\speexdsp-1.2rc3\libspeexdsp\filterbank.h
 inmp441\preprocess.o: ..\speexdsp-1.2rc3\libspeexdsp\math_approx.h

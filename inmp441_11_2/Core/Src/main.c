@@ -30,53 +30,87 @@
 /* USER CODE BEGIN Includes */
 #include "stdint.h"
 #include "stdio.h"
-
-int fputc(int ch, FILE *f)
-{
-  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 1, 0xffff);
-  return ch;
+#include <speex/speex_preprocess.h>
+#include <speex/speex.h>
+#define SAMPLE_RATE 8000
+#define FRAME_SIZE 80
+#define RAW_FRAME_SIZE FRAME_SIZE*2
+SpeexBits bits;
+int fputc(int ch, FILE *f) {
+    HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 1, 0x1000);  // 使用USART1，超时时间足够长
+    return ch;
 }
 
-int fgetc(FILE *f)
-{
-  uint8_t ch = 0;
-  HAL_UART_Receive(&huart1, &ch, 1, 0xffff);
-  return ch;
+spx_int16_t pcm_buf[2][FRAME_SIZE];
+uint8_t curr_buf_idx = 0; 
+volatile uint8_t data_ready = 0;      // 一帧数据就绪标志
+SpeexPreprocessState *preprocess_state;
+
+// 4. INMP441 24位→16位PCM转换（提取有效声道）
+void INMP441_ConvertTo16bitPCM(spx_int16_t *pcm_out, uint16_t *i2s_in, uint32_t len) {
+    for (uint32_t i = 0; i < len; i++) {
+        // 步骤1：提取有效声道（假设INMP441接左声道，取偶数索引0,2,4...）
+        uint16_t raw_16bit = i2s_in[2 * i];  // 跳过右声道（奇数索引）
+        
+        // 步骤2：INMP441输出为无符号16位，转换为有符号16位PCM
+        // （24位数据截取高16位后，偏移量调整为16位范围）
+        pcm_out[i] = (spx_int16_t)(raw_16bit);  // 无符号→有符号
+    }
 }
-#define RXBUFFERSIZE  256
-char RxBuffer[RXBUFFERSIZE]; 
-char txt[10];
+void Speex_Init(void) {
+		HAL_UART_Transmit(&huart1,"into init",11,0x1000);
+    preprocess_state= speex_preprocess_state_init(80, SAMPLE_RATE); 
+    if (preprocess_state == NULL) {
+        HAL_UART_Transmit(&huart1,"not success",12,0x1000);
+    }
+		else {
+			HAL_UART_Transmit(&huart1,"success",7,0x1000);
+		}
+    // 配置16位PCM优化参数
+    int denoise = 1;                // 开启降噪 
+	
+    speex_preprocess_ctl(preprocess_state, SPEEX_PREPROCESS_SET_DENOISE, &denoise);
+}
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-uint32_t dma[4];
+int16_t dma[80];
+spx_int16_t pcm_d[80];
 uint32_t val24;
 int val32;
 int PCM16;
 unsigned cb_cnt=0;
-//I2S接收完成回调函数
 void HAL_I2S_RxCpltCallback(I2S_HandleTypeDef *hi2s)
 {
 	if(hi2s==&hi2s2){
+		data_ready=1;
+		curr_buf_idx = 1-curr_buf_idx;
 		cb_cnt++;//回调次数计数
-		//将两个32整型合并为一个
-		//dat32 example: 0000fffb 00004f00
-		val24=(dma[0]<<8)+(dma[1]>>8);
-		//将24位有符号整型扩展到32位
-		if(val24 & 0x800000){//negative
-			val32=0xff000000 | val24;
-		}else{//positive
-			val32=val24;
-		}
-		PCM16 = (int16_t)(val32>>8);
-		//以采样频率的十分之一，串口发送采样值
-		if(cb_cnt%100==0)
-		{sprintf(txt,"pcm=%d\n",PCM16);
-			HAL_UART_Transmit(&huart1,(uint8_t *)&txt,10,0x1000);
-		}
+		if(cb_cnt%5==0)
+			printf("pcm=%d speex=%d\r\n",dma[0],pcm_buf[curr_buf_idx][0]);
+		INMP441_ConvertTo16bitPCM(pcm_buf[curr_buf_idx],dma,80);	
 	}
 }
+//void HAL_I2S_RxCpltCallback(I2S_HandleTypeDef *hi2s)
+//{
+//	if(hi2s==&hi2s2){
+//		cb_cnt++;//回调次数计数
+//		//将两个32整型合并为一个
+//		//dat32 example: 0000fffb 00004f00
+//		val24=(dma[0]<<8)+(dma[1]>>8);
+//		//将24位有符号整型扩展到32位
+//		if(val24 & 0x800000){//negative
+//			val32=0xff000000 | val24;
+//		}else{//positive
+//			val32=val24;
+//		}
+//		//以采样频率的十分之一，串口发送采样值
+//		if(cb_cnt%10==0)
+//			printf("%d\r\n",val32);
+//	}
+//}
+
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -143,13 +177,43 @@ int main(void)
   MX_SPI1_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
-	HAL_I2S_Receive_DMA(&hi2s2,(uint16_t*)dma,4);
+	Speex_Init();
+	HAL_I2S_Receive_DMA(&hi2s2,(uint16_t*)dma,80);	
+	
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+		{
+       if (data_ready) {
+        // 1. 取“已完成接收”的缓冲区（不是当前正在接收的）
+        uint8_t process_idx = 1 - curr_buf_idx;
+					printf("pcm=\r\n");
+				   for (int i = 0; i < 80; i++){
+						printf("%d ",pcm_buf[curr_buf_idx][i]);
+						 if(i%5==0){
+							printf("\r\n");
+						 }
+					}
+        // 2. 处理该缓冲区（此时 DMA 正在写另一个缓冲区，不会覆盖当前数据）
+				int16_t frame1[80];
+				memcpy(frame1,pcm_buf[curr_buf_idx],40*sizeof(int16_t *));
+        speex_preprocess_run(preprocess_state,frame1);
+        // 执行编码...
+				printf("speex=\r\n");
+				for (int i = 0; i < 80; i++){
+					printf("%d",frame1	[i]);
+					if(i%5==0){
+						printf("\r\n");
+					 }
+					}
+        // 3. 清除就绪标志，等待下一帧
+				data_ready = 0;
+				//HAL_I2S_Receive_DMA(&hi2s2,(uint16_t*)dma,160);	
+			}   
+    }
 
     /* USER CODE END WHILE */
 
@@ -222,8 +286,7 @@ void Error_Handler(void)
   }
   /* USER CODE END Error_Handler_Debug */
 }
-
-#ifdef  USE_FULL_ASSERT
+#ifdef USE_FULL_ASSERT
 /**
   * @brief  Reports the name of the source file and the source line number
   *         where the assert_param error has occurred.

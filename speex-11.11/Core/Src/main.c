@@ -42,9 +42,9 @@
 
 // 配置参数
 #define SAMPLE_RATE 8000           // 8kHz 采样率
-#define FRAME_SIZE 80              // 10ms 帧大小
-#define MAX_ENCODED_BYTES 50       // 编码后最大字节数
-int QUALITY=6;                  // 编码质量 (0-10);
+#define FRAME_SIZE 160              // 20ms 帧大小
+#define MAX_ENCODED_BYTES 200       // 编码后最大字节数
+int QUALITY=10;                  // 编码质量 (0-10);
 
 // 全局状态
 static SpeexBits g_enc_bits;
@@ -54,17 +54,27 @@ static void *g_dec_state = NULL;
 static int g_initialized = 0;
 
 // 测试PCM数据
-short pcm_array[80] = {
-    0xF0FE, 0xFBFE, 0x3EFC, 0xCBFD, 0x3FFB, 0xDBF9, 0x26FC, 0xC5F9,
-    0x30FF, 0x0F02, 0xC6FE, 0x81FD, 0x68FA, 0x06F8, 0xC8FB, 0x0602,
-    0xA804, 0xF002, 0xF0FF, 0x9A00, 0x92FD, 0x7BFC, 0x26FF, 0x6901,
-    0x0302, 0x6C04, 0x2F07, 0x0905, 0x3702, 0xE900, 0xDEFF, 0x7C01,
-    0x2703, 0x5702, 0xC901, 0xFA03, 0xB102, 0x4DFF, 0xF000, 0x91FF,
-    0xA9FF, 0x1A04, 0xF205, 0xFF05, 0x2901, 0xEB03, 0xC108, 0x2B05,
-    0x4B00, 0xCCFE, 0x2902, 0x3503, 0xECFE, 0x3201, 0x0105, 0xC8FF,
-    0xE1F8, 0x19FB, 0xD2FE, 0x02FE, 0x2AF8, 0x8BF8, 0xCDFE, 0xDEFD,
-    0x1FFD, 0xD6FC, 0x90FC, 0x8FFB, 0xDDF9, 0x8BF9, 0x70FB, 0xFCFD,
-    0x12FD, 0xDCFE, 0x7202, 0xAA00, 0xA9FE, 0x74FD, 0x2D00, 0x2501
+short pcm_array[160] = {
+    1234, -5678, 9012, -3456, 7890, -1234, 5678, -9012,
+    3456, -7890, 1357, -2468, 9753, -8642, 1122, -3344,
+    5566, -7788, 9900, -1122, 3344, -5566, 7788, -9900,
+    2468, -1357, 8642, -9753, 2233, -4455, 6677, -8899,
+    1010, -2020, 3030, -4040, 5050, -6060, 7070, -8080,
+    9090, -1010, 2020, -3030, 4040, -5050, 6060, -7070,
+    8080, -9090, 1212, -3434, 5656, -7878, 9090, -2121,
+    4343, -6565, 8787, -9898, 1313, -5757, 9191, -3535,
+    -1515, 2626, -4747, 6868, -8989, 1414, -3636, 5858,
+    -7979, 9292, -1616, 3737, -5959, 8080, -2323, 4545,
+    -6767, 8989, -1212, 3434, -5656, 7878, -9090, 2121,
+    -4343, 6565, -8787, 9898, -1313, 5757, -9191, 3535,
+    1515, -2626, 4747, -6868, 8989, -1414, 3636, -5858,
+    7979, -9292, 1616, -3737, 5959, -8080, 2323, -4545,
+    6767, -8989, 1234, -5678, 9012, -3456, 7890, -1234,
+    5678, -9012, 3456, -7890, 1357, -2468, 9753, -8642,
+    1122, -3344, 5566, -7788, 9900, -1122, 3344, -5566,
+    7788, -9900, 2468, -1357, 8642, -9753, 2233, -4455,
+    6677, -8899, 1010, -2020, 3030, -4040, 5050, -6060,
+    7070, -8080, 9090, -1010, 2020, -3030, 4040, -5050
 };
 
 /**
@@ -98,7 +108,7 @@ void print_pcm(const short *pcm, int size) {
  * @brief 初始化Speex编解码器
  * @return 成功返回0，失败返回-1
  */
-int speex_codec_init(void) {
+int speex_encod_init(void) {
     // 初始化编码器
     speex_bits_init(&g_enc_bits);
     g_enc_state = speex_encoder_init(&speex_nb_mode);
@@ -113,6 +123,14 @@ int speex_codec_init(void) {
     int vbr = 0;  // 关闭VBR，使用固定比特率
     speex_encoder_ctl(g_enc_state, SPEEX_SET_VBR, &vbr);
     
+    // 显示配置信息
+    int frame_size;
+    speex_encoder_ctl(g_enc_state, SPEEX_GET_FRAME_SIZE, &frame_size);
+    printf("配置: 帧大小=%d样本, 采样率=%dHz\n", frame_size, SAMPLE_RATE);
+    
+    return 0;
+}
+int speex_decod_init(void) {   
     // 初始化解码器
     speex_bits_init(&g_dec_bits);
     g_dec_state = speex_decoder_init(&speex_nb_mode);
@@ -137,7 +155,6 @@ int speex_codec_init(void) {
     
     return 0;
 }
-
 /**
  * @brief 编码PCM数据
  * @param pcm_input 输入的PCM数据
@@ -222,21 +239,24 @@ void compare_pcm_frames(const short *orig, const short *decoded, int size) {
 /**
  * @brief 清理资源
  */
-void speex_codec_cleanup(void) {
+void speex_encod_cleanup(void) {
     if (g_enc_state != NULL) {
         speex_encoder_destroy(g_enc_state);
         g_enc_state = NULL;
     }
+    speex_bits_destroy(&g_enc_bits);
+    g_initialized = 0;
+    printf("✅ Speex编码器资源已清理\n");
+}
+
+void speex_decod_cleanup(void){
     if (g_dec_state != NULL) {
         speex_decoder_destroy(g_dec_state);
         g_dec_state = NULL;
     }
-    speex_bits_destroy(&g_enc_bits);
-    speex_bits_destroy(&g_dec_bits);
-    g_initialized = 0;
-    printf("✅ Speex编解码器资源已清理\n");
+		speex_bits_destroy(&g_dec_bits);
+		printf("✅ Speex解码器资源已清理\n");
 }
-
 /**
  * @brief 完整的编码解码测试
  */
@@ -247,8 +267,8 @@ void complete_speex_test(void) {
     printf("========================================\n");
     
     // 1. 初始化
-    printf("\n1. 初始化编解码器...\n");
-    if (speex_codec_init() != 0) {
+    printf("\n1. 初始化编码器...\n");
+    if (speex_encod_init() != 0) {
         printf("初始化失败，退出测试\n");
         return;
     }
@@ -264,7 +284,7 @@ void complete_speex_test(void) {
     
     if (encoded_size <= 0) {
         printf("编码失败，退出测试\n");
-        speex_codec_cleanup();
+        speex_encod_cleanup();
         return;
     }
     
@@ -272,11 +292,17 @@ void complete_speex_test(void) {
     print_hex(encoded_data, encoded_size);
     
     // 4. 解码
+		printf("\n1. 初始化解码器...\n");
+    if (speex_decod_init() != 0) {
+        printf("初始化失败，退出测试\n");
+        return;
+    }
     printf("\n4. 开始解码...\n");
+		
     short decoded_pcm[FRAME_SIZE];
     if (speex_decode_frame(encoded_data, encoded_size, decoded_pcm) != 0) {
         printf("解码失败，退出测试\n");
-        speex_codec_cleanup();
+        speex_decod_cleanup();
         return;
     }
     
@@ -289,7 +315,7 @@ void complete_speex_test(void) {
     
     // 6. 清理资源
     printf("\n6. 清理资源...\n");
-    speex_codec_cleanup();
+    speex_decod_cleanup();
     
     printf("\n========================================\n");
     printf("             测试完成\n");

@@ -109,9 +109,9 @@ FilterBank *filterbank_new(int banks, spx_word32_t sampling, int len, int type)
    for (i=0;i<bank->len;i++)
    {
       int id = bank->bank_left[i];
-      bank->scaling[id] += bank->filter_left[i];
+      bank->scaling[id] += (float)bank->filter_left[i];
       id = bank->bank_right[i];
-      bank->scaling[id] += bank->filter_right[i];
+      bank->scaling[id] += (float)bank->filter_right[i];
    }
    for (i=0;i<bank->nb_banks;i++)
       bank->scaling[i] = Q15_ONE/(bank->scaling[i]);

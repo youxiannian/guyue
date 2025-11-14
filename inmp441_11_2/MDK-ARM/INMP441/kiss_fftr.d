@@ -11,5 +11,6 @@ inmp441\kiss_fftr.o: D:\software\keil_\ARM\ARMCC\Bin\..\include\math.h
 inmp441\kiss_fftr.o: ..\speexdsp-1.2rc3\libspeexdsp\arch.h
 inmp441\kiss_fftr.o: ../speexdsp-1.2rc3/include/speex/speexdsp_types.h
 inmp441\kiss_fftr.o: ../speexdsp-1.2rc3/include/speex/speexdsp_config_types.h
+inmp441\kiss_fftr.o: ..\speexdsp-1.2rc3\libspeexdsp\fixed_generic.h
 inmp441\kiss_fftr.o: ..\speexdsp-1.2rc3\libspeexdsp\_kiss_fft_guts.h
 inmp441\kiss_fftr.o: ..\speexdsp-1.2rc3\libspeexdsp\math_approx.h

@@ -44,3 +44,6 @@ inmp441\main.o: ../Core/Inc/spi.h
 inmp441\main.o: ../Core/Inc/usart.h
 inmp441\main.o: ../Core/Inc/gpio.h
 inmp441\main.o: D:\software\keil_\ARM\ARMCC\Bin\..\include\stdio.h
+inmp441\main.o: ../speexdsp-1.2rc3/include/speex/speex_preprocess.h
+inmp441\main.o: ../speexdsp-1.2rc3/include/speex/speexdsp_types.h
+inmp441\main.o: ../speexdsp-1.2rc3/include/speex/speexdsp_config_types.h

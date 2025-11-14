@@ -7,6 +7,7 @@ inmp441\kiss_fft.o: D:\software\keil_\ARM\ARMCC\Bin\..\include\math.h
 inmp441\kiss_fft.o: ..\speexdsp-1.2rc3\libspeexdsp\arch.h
 inmp441\kiss_fft.o: ../speexdsp-1.2rc3/include/speex/speexdsp_types.h
 inmp441\kiss_fft.o: ../speexdsp-1.2rc3/include/speex/speexdsp_config_types.h
+inmp441\kiss_fft.o: ..\speexdsp-1.2rc3\libspeexdsp\fixed_generic.h
 inmp441\kiss_fft.o: ..\speexdsp-1.2rc3\libspeexdsp\math_approx.h
 inmp441\kiss_fft.o: ..\speexdsp-1.2rc3\libspeexdsp\os_support.h
 inmp441\kiss_fft.o: D:\software\keil_\ARM\ARMCC\Bin\..\include\string.h

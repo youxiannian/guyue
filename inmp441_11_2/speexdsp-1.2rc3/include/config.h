@@ -26,11 +26,11 @@
 #undef FIXED_DEBUG
 
 /* Compile as fixed-point */
-#undef FIXED_POINT
+#define FIXED_POINT
 
 /* Compile as floating-point */
-//#undef FLOATING_POINT
-#define FLOATING_POINT
+#undef FLOATING_POINT
+//#define FLOATING_POINT
 
 /* Define to 1 if you have the <alloca.h> header file. */
 #undef HAVE_ALLOCA_H
@@ -194,6 +194,6 @@
 # define _Restrict
 # define __restrict__
 #endif
-
+#define exit(a) ;
 
 
