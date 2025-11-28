@@ -1,0 +1,9 @@
+inmp441\vq.o: ..\Lib\src\vq.c
+inmp441\vq.o: ..\Lib\src\config.h
+inmp441\vq.o: ..\Lib\src\vq.h
+inmp441\vq.o: ..\Lib\src\arch.h
+inmp441\vq.o: ..\Lib\include\speex/speex_types.h
+inmp441\vq.o: ..\Lib\include\speex/speex_config_types.h
+inmp441\vq.o: D:\software\keil_\ARM\ARMCC\Bin\..\include\stdint.h
+inmp441\vq.o: ..\Lib\src\fixed_generic.h
+inmp441\vq.o: ..\Lib\src\stack_alloc.h

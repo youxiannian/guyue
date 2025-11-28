@@ -1,0 +1,9 @@
+inmp441\vbr.o: ..\Lib\src\vbr.c
+inmp441\vbr.o: ..\Lib\src\config.h
+inmp441\vbr.o: ..\Lib\src\vbr.h
+inmp441\vbr.o: ..\Lib\src\arch.h
+inmp441\vbr.o: ..\Lib\include\speex/speex_types.h
+inmp441\vbr.o: ..\Lib\include\speex/speex_config_types.h
+inmp441\vbr.o: D:\software\keil_\ARM\ARMCC\Bin\..\include\stdint.h
+inmp441\vbr.o: ..\Lib\src\fixed_generic.h
+inmp441\vbr.o: D:\software\keil_\ARM\ARMCC\Bin\..\include\math.h

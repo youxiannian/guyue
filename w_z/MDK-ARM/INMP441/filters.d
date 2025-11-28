@@ -1,0 +1,13 @@
+inmp441\filters.o: ..\Lib\src\filters.c
+inmp441\filters.o: ..\Lib\src\config.h
+inmp441\filters.o: ..\Lib\src\filters.h
+inmp441\filters.o: ..\Lib\src\arch.h
+inmp441\filters.o: ..\Lib\include\speex/speex_types.h
+inmp441\filters.o: ..\Lib\include\speex/speex_config_types.h
+inmp441\filters.o: D:\software\keil_\ARM\ARMCC\Bin\..\include\stdint.h
+inmp441\filters.o: ..\Lib\src\fixed_generic.h
+inmp441\filters.o: ..\Lib\src\stack_alloc.h
+inmp441\filters.o: ..\Lib\src\math_approx.h
+inmp441\filters.o: ..\Lib\src\ltp.h
+inmp441\filters.o: ..\Lib\include\speex/speex_bits.h
+inmp441\filters.o: D:\software\keil_\ARM\ARMCC\Bin\..\include\math.h

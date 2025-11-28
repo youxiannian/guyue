@@ -1,0 +1,11 @@
+inmp441\testenc_wb.o: ..\Lib\src\testenc_wb.c
+inmp441\testenc_wb.o: ..\Lib\src\config.h
+inmp441\testenc_wb.o: ..\Lib\include\speex/speex_callbacks.h
+inmp441\testenc_wb.o: ..\Lib\include\speex/speex.h
+inmp441\testenc_wb.o: ..\Lib\include\speex/speex_types.h
+inmp441\testenc_wb.o: ..\Lib\include\speex/speex_config_types.h
+inmp441\testenc_wb.o: D:\software\keil_\ARM\ARMCC\Bin\..\include\stdint.h
+inmp441\testenc_wb.o: ..\Lib\include\speex/speex_bits.h
+inmp441\testenc_wb.o: D:\software\keil_\ARM\ARMCC\Bin\..\include\stdio.h
+inmp441\testenc_wb.o: D:\software\keil_\ARM\ARMCC\Bin\..\include\stdlib.h
+inmp441\testenc_wb.o: D:\software\keil_\ARM\ARMCC\Bin\..\include\math.h
