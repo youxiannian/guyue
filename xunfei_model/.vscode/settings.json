@@ -1,0 +1,15 @@
+{
+    "files.associations": {
+        "atomic": "cpp",
+        "memory": "cpp",
+        "iostream": "cpp",
+        "istream": "cpp",
+        "sstream": "cpp",
+        "streambuf": "cpp",
+        "typeinfo": "cpp",
+        "utility": "cpp",
+        "string": "cpp",
+        "string_view": "cpp",
+        "regex": "cpp"
+    }
+}

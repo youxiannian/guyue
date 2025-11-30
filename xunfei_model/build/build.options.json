@@ -1,0 +1,9 @@
+{
+  "additionalFiles": "..\\..\\..,..\\..\\..,..\\..\\..,..\\..,..\\..,..\\..,..\\..",
+  "compiler.optimization_flags": "",
+  "customBuildProperties": "",
+  "fqbn": "esp8266:esp8266:generic:led=1,baud=3000000,xtal=80,CrystalFreq=40,eesz=1M64,FlashMode=dout,FlashFreq=80,ResetMethod=nodemcu,dbg=Disabled,lvl=None____,ip=lm2f,vt=flash,exception=disabled,stacksmash=disabled,wipe=none,sdk=nonosdk_190703,ssl=all,mmu=3232,non32xfer=fast",
+  "hardwareFolders": "C:\\Users\\QAQ\\AppData\\Local\\Arduino15\\packages",
+  "otherLibrariesFolders": "D:\\software\\arduino\\program\\libraries",
+  "sketchLocation": "D:\\01-同步文件夹\\Arduino\\mini_test"
+}

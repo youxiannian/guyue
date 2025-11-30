@@ -1,0 +1,16 @@
+#line 1 "D:\\01-同步文件夹\\Arduino\\mini_test\\.vscode\\settings.json"
+{
+    "files.associations": {
+        "atomic": "cpp",
+        "memory": "cpp",
+        "iostream": "cpp",
+        "istream": "cpp",
+        "sstream": "cpp",
+        "streambuf": "cpp",
+        "typeinfo": "cpp",
+        "utility": "cpp",
+        "string": "cpp",
+        "string_view": "cpp",
+        "regex": "cpp"
+    }
+}

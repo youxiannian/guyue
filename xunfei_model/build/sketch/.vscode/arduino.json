@@ -1,0 +1,23 @@
+#line 1 "D:\\01-同步文件夹\\Arduino\\mini_test\\.vscode\\arduino.json"
+{
+  "port": "COM7",
+  "configuration": "led=1,baud=3000000,xtal=80,CrystalFreq=40,eesz=1M64,FlashMode=dout,FlashFreq=80,ResetMethod=nodemcu,dbg=Disabled,lvl=None____,ip=lm2f,vt=flash,exception=disabled,stacksmash=disabled,wipe=none,sdk=nonosdk_190703,ssl=all,mmu=3232,non32xfer=fast",
+  "output": "build",
+  "board": "esp8266:esp8266:generic",
+  "programmer": "",
+  "useProgrammer": false,
+  "optimize_for_debug": false,
+  "configurationRequired": true,
+  "compile_profile": "",
+  "monitorPortSettings": {
+    "settings": {
+      "port": "COM7",
+      "baudRate": 115200,
+      "lineEnding": "\r\n",
+      "dataBits": 8,
+      "parity": "none",
+      "stopBits": "one"
+    },
+    "profile_name": ""
+  }
+}
